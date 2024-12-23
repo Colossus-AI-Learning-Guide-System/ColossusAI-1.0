@@ -1,9 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { User } from "@/lib/models/user.model";
-import { LoginRequest, AuthResponse } from "@/lib/type/auth.types";
-import bcrypt from "bcryptjs";
+import { SignupRequest, AuthResponse } from "@/lib/type/auth.types";
 import jwt from "jsonwebtoken";
-import clientPromise from "@/lib/mongodb";
+import dbConnect from "@/lib/db";
 
 export default async function handler(
   req: NextApiRequest,
@@ -16,36 +15,43 @@ export default async function handler(
   }
 
   try {
-    await clientPromise;
-    const { emailOrUsername, password }: LoginRequest = req.body;
+    await dbConnect(); // Connect to MongoDB using mongoose
+    const { username, email, password, confirmPassword }: SignupRequest =
+      req.body;
 
-    if (!emailOrUsername || !password) {
+    // Validation
+    if (!username || !email || !password || !confirmPassword) {
       return res.status(400).json({
         success: false,
         message: "All fields are required",
       });
     }
 
-    // Find user
-    const user = await User.findOne({
-      $or: [{ email: emailOrUsername }, { username: emailOrUsername }],
+    if (password !== confirmPassword) {
+      return res.status(400).json({
+        success: false,
+        message: "Passwords do not match",
+      });
+    }
+
+    // Check existing user
+    const existingUser = await User.findOne({
+      $or: [{ email }, { username }],
     });
 
-    if (!user) {
-      return res.status(401).json({
+    if (existingUser) {
+      return res.status(400).json({
         success: false,
-        message: "Invalid credentials",
+        message: "Email or username already exists",
       });
     }
 
-    // Verify password
-    const isValid = await bcrypt.compare(password, user.password);
-    if (!isValid) {
-      return res.status(401).json({
-        success: false,
-        message: "Invalid credentials",
-      });
-    }
+    // Create user
+    const user = await User.create({
+      username,
+      email,
+      password,
+    });
 
     const token = jwt.sign(
       { userId: user._id },
@@ -53,9 +59,9 @@ export default async function handler(
       { expiresIn: "24h" }
     );
 
-    res.status(200).json({
+    res.status(201).json({
       success: true,
-      message: "Login successful",
+      message: "Account created successfully",
       token,
       user: {
         id: user._id,
@@ -64,7 +70,7 @@ export default async function handler(
       },
     });
   } catch (error) {
-    console.error("Login error:", error);
+    console.error("Signup error:", error);
     res.status(500).json({
       success: false,
       message: "Internal server error",
