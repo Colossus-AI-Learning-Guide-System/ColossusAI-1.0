@@ -1,18 +1,38 @@
 'use client'
 
 import { useState } from 'react'
-import { useChat } from 'ai/react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { ScrollArea } from "@/components/ui/scroll-area"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { FileAttachment } from '@/components/file-attachment'
-import { ChatMessage } from '@/components/chat-message'
+import KnowledgeGraph from '@/components/knowledge-graph'
 import { Send } from 'lucide-react'
 
+const mockGPTOutput = () => {
+  return [
+    {
+      title: "Public Access Modifier",
+      content: "The public modifier offers the widest scope of access in Java. When a class member is declared as public, it can be accessed from any other class, regardless of package."
+    },
+    {
+      title: "Protected Access Modifier",
+      content: "Protected members are accessible within the same package and by subclass instances, even if those subclasses reside in different packages. Useful in inheritance scenarios."
+    },
+    {
+      title: "Default (Package-Private) Access Modifier",
+      content: "When no access modifier is specified, Java applies the default access level. Members with default access are only visible to classes within the same package."
+    },
+    {
+      title: "Private Access Modifier",
+      content: "Private is the most restrictive access modifier in Java. Members declared as private are only accessible within the declaring class itself, enforcing the highest level of encapsulation."
+    }
+  ]
+}
+
 export default function ChatInterface() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat()
+  const [input, setInput] = useState('')
   const [attachments, setAttachments] = useState<File[]>([])
+  const [graphData, setGraphData] = useState(mockGPTOutput())
 
   const handleAttachment = (files: File[]) => {
     setAttachments(prevAttachments => [...prevAttachments, ...files])
@@ -21,12 +41,11 @@ export default function ChatInterface() {
   const handleSendMessage = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (input.trim() || attachments.length > 0) {
-      handleSubmit(e, {
-        options: {
-          attachments: attachments
-        }
-      })
+      // Handle message sending here
+      setInput('')
       setAttachments([])
+      // Simulate updating graph data when a new message is sent
+      setGraphData(mockGPTOutput())
     }
   }
 
@@ -47,18 +66,16 @@ export default function ChatInterface() {
           <CardHeader>
             <CardTitle>Modern Chatbot</CardTitle>
           </CardHeader>
-          <CardContent className="flex-grow overflow-hidden">
-            <ScrollArea className="h-full pr-4">
-              {messages.map((message) => (
-                <ChatMessage key={message.id} message={message} />
-              ))}
-            </ScrollArea>
+          <CardContent className="flex-grow overflow-hidden relative">
+            <div className="absolute inset-0">
+              <KnowledgeGraph data={graphData} />
+            </div>
           </CardContent>
           <CardFooter>
             <form onSubmit={handleSendMessage} className="flex w-full space-x-2">
               <Input
                 value={input}
-                onChange={handleInputChange}
+                onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your message..."
                 className="flex-grow"
               />
