@@ -1,9 +1,13 @@
 import React from 'react'
+import Navbar from '../navbar/page';
+import Footer from '../footer/page';
 
 function about() {
   return (
     <div>
-        <iframe src="https://discord.com/widget?id=1296419198632722543&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        <Navbar />
+        <h1 className="text-3xl font-bold text-center my-96">About</h1>
+        <Footer />
     </div>
   )
 }
