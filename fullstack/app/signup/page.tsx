@@ -1,4 +1,8 @@
 import React from 'react';
+<<<<<<< HEAD
+=======
+import { FaGoogle } from 'react-icons/fa';
+>>>>>>> 83995b1a253267d4795086fb3ed77f9b44239279
 
 const Signup: React.FC = () => {
   return (
@@ -24,6 +28,7 @@ const Signup: React.FC = () => {
           maxWidth: '500px',
         }}
       >
+<<<<<<< HEAD
         <input
           type="text"
           placeholder="Username"
@@ -36,6 +41,39 @@ const Signup: React.FC = () => {
             fontSize: '16px',
           }}
         />
+=======
+        <div
+          style={{
+            display: 'flex',
+            width: '100%',
+          }}
+        >
+          <input
+            type="text"
+            placeholder="First name"
+            style={{
+              flex: 1,
+              padding: '12px',
+              margin: '5px 5px 5px 0',
+              border: '2px solid #ccc',
+              borderRadius: '20px',
+              fontSize: '16px',
+            }}
+          />
+          <input
+            type="text"
+            placeholder="Surname"
+            style={{
+              flex: 1,
+              padding: '12px',
+              margin: '5px 0',
+              border: '2px solid #ccc',
+              borderRadius: '20px',
+              fontSize: '16px',
+            }}
+          />
+        </div>
+>>>>>>> 83995b1a253267d4795086fb3ed77f9b44239279
         <input
           type="email"
           placeholder="Email Address"
@@ -111,6 +149,7 @@ const Signup: React.FC = () => {
             Login
           </a>
         </p>
+<<<<<<< HEAD
       </form>
       <footer
         style={{
@@ -124,6 +163,30 @@ const Signup: React.FC = () => {
       >
         Copyright © Colossus.AI Rights Reserved
       </footer>
+=======
+        <button
+          style={{
+            width: '100%',
+            maxWidth: '50%',
+            padding: '12px',
+            borderRadius: '20px',
+            border: 'none',
+            cursor: 'pointer',
+            fontSize: '16px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: '5px',
+            marginBottom: '5px',
+            backgroundColor: '#4285F4',
+            color: 'white',
+          }}
+        >
+          <FaGoogle style={{ marginRight: '10px' }} />
+          Continue with Google
+        </button>
+      </form>
+>>>>>>> 83995b1a253267d4795086fb3ed77f9b44239279
     </div>
   );
 };
