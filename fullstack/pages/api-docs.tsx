@@ -55,106 +55,106 @@ export const getStaticProps: GetStaticProps = async () => {
             }
           }
         },
-        '/auth/login': {
-          post: {
-            summary: 'User login',
-            requestBody: {
-              required: true,
-              content: {
-                'application/json': {
-                  schema: {
-                    type: 'object',
-                    properties: {
-                      emailOrUsername: { type: 'string' },
-                      password: { type: 'string' }
-                    },
-                    required: ['emailOrUsername', 'password']
-                  }
-                }
-              }
-            },
-            responses: {
-              200: { description: 'Login successful' },
-              401: { description: 'Invalid credentials' },
-              500: { description: 'Server error' }
-            }
-          }
-        },
-        '/auth/reset-password': {
-          post: {
-            summary: 'Request password reset',
-            requestBody: {
-              required: true,
-              content: {
-                'application/json': {
-                  schema: {
-                    type: 'object',
-                    properties: {
-                      email: { type: 'string' }
-                    },
-                    required: ['email']
-                  }
-                }
-              }
-            },
-            responses: {
-              200: { description: 'Reset pin sent' },
-              404: { description: 'User not found' },
-              500: { description: 'Server error' }
-            }
-          }
-        },
-        '/auth/verify-pin': {
-          post: {
-            summary: 'Verify reset pin and update password',
-            requestBody: {
-              required: true,
-              content: {
-                'application/json': {
-                  schema: {
-                    type: 'object',
-                    properties: {
-                      email: { type: 'string' },
-                      pin: { type: 'string' },
-                      newPassword: { type: 'string' },
-                      confirmPassword: { type: 'string' }
-                    },
-                    required: ['email', 'pin', 'newPassword', 'confirmPassword']
-                  }
-                }
-              }
-            },
-            responses: {
-              200: { description: 'Password updated successfully' },
-              400: { description: 'Invalid or expired pin' },
-              500: { description: 'Server error' }
-            }
-          }
-        },
-        '/auth/google': {
-          post: {
-            summary: 'Authenticate with Google',
-            requestBody: {
-              required: true,
-              content: {
-                'application/json': {
-                  schema: {
-                    type: 'object',
-                    properties: {
-                      code: { type: 'string' }
-                    },
-                    required: ['code']
-                  }
-                }
-              }
-            },
-            responses: {
-              200: { description: 'Google authentication successful' },
-              400: { description: 'Invalid Google token' },
-              500: { description: 'Server error' }
-            }
-          }
-        }
+        // '/auth/login': {
+        //   post: {
+        //     summary: 'User login',
+        //     requestBody: {
+        //       required: true,
+        //       content: {
+        //         'application/json': {
+        //           schema: {
+        //             type: 'object',
+        //             properties: {
+        //               emailOrUsername: { type: 'string' },
+        //               password: { type: 'string' }
+        //             },
+        //             required: ['emailOrUsername', 'password']
+        //           }
+        //         }
+        //       }
+        //     },
+        //     responses: {
+        //       200: { description: 'Login successful' },
+        //       401: { description: 'Invalid credentials' },
+        //       500: { description: 'Server error' }
+        //     }
+        //   }
+        // },
+        // '/auth/reset-password': {
+        //   post: {
+        //     summary: 'Request password reset',
+        //     requestBody: {
+        //       required: true,
+        //       content: {
+        //         'application/json': {
+        //           schema: {
+        //             type: 'object',
+        //             properties: {
+        //               email: { type: 'string' }
+        //             },
+        //             required: ['email']
+        //           }
+        //         }
+        //       }
+        //     },
+        //     responses: {
+        //       200: { description: 'Reset pin sent' },
+        //       404: { description: 'User not found' },
+        //       500: { description: 'Server error' }
+        //     }
+        //   }
+        // },
+        // '/auth/verify-pin': {
+        //   post: {
+        //     summary: 'Verify reset pin and update password',
+        //     requestBody: {
+        //       required: true,
+        //       content: {
+        //         'application/json': {
+        //           schema: {
+        //             type: 'object',
+        //             properties: {
+        //               email: { type: 'string' },
+        //               pin: { type: 'string' },
+        //               newPassword: { type: 'string' },
+        //               confirmPassword: { type: 'string' }
+        //             },
+        //             required: ['email', 'pin', 'newPassword', 'confirmPassword']
+        //           }
+        //         }
+        //       }
+        //     },
+        //     responses: {
+        //       200: { description: 'Password updated successfully' },
+        //       400: { description: 'Invalid or expired pin' },
+        //       500: { description: 'Server error' }
+        //     }
+        //   }
+        // },
+        // '/auth/google': {
+        //   post: {
+        //     summary: 'Authenticate with Google',
+        //     requestBody: {
+        //       required: true,
+        //       content: {
+        //         'application/json': {
+        //           schema: {
+        //             type: 'object',
+        //             properties: {
+        //               code: { type: 'string' }
+        //             },
+        //             required: ['code']
+        //           }
+        //         }
+        //       }
+        //     },
+        //     responses: {
+        //       200: { description: 'Google authentication successful' },
+        //       400: { description: 'Invalid Google token' },
+        //       500: { description: 'Server error' }
+        //     }
+        //   }
+        // }
       }
     }
   });

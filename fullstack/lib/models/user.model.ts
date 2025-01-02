@@ -5,9 +5,9 @@ export interface IUser {
   username: string;
   email: string;
   password: string;
-  resetPin?: string;
-  resetPinExpiry?: Date;
-  googleId?: string;
+  // resetPin?: string;
+  // resetPinExpiry?: Date;
+  // googleId?: string;
 }
 
 const userSchema = new Schema<IUser>({
@@ -25,11 +25,12 @@ const userSchema = new Schema<IUser>({
     type: String,
     required: true,
   },
-  resetPin: String,
-  resetPinExpiry: Date,
-  googleId: String,
-}, {
-  timestamps: true
+// //   resetPin: String,
+// //   resetPinExpiry: Date,
+// //   googleId: String,
+// // }, 
+// {
+//   timestamps: true
 });
 
 // Hash password before saving
