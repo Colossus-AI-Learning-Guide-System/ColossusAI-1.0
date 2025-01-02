@@ -13,7 +13,7 @@ export default async function handler(
 
   try {
     const client = await clientPromise;
-    const db = client.db("colossus_ai"); // Make sure this matches your database name
+    const db = client.db("colossus_ai"); // Your database name
     const users = db.collection("users");
 
     const { username, email, password, confirmPassword }: SignupRequest = req.body;
