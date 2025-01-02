@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaGoogle } from 'react-icons/fa';
 
 const Signup: React.FC = () => {
   return (
@@ -25,37 +24,18 @@ const Signup: React.FC = () => {
           maxWidth: '500px',
         }}
       >
-        <div
+        <input
+          type="text"
+          placeholder="Username"
           style={{
-            display: 'flex',
             width: '100%',
+            padding: '12px',
+            marginBottom: '10px',
+            border: '2px solid #ccc',
+            borderRadius: '20px',
+            fontSize: '16px',
           }}
-        >
-          <input
-            type="text"
-            placeholder="First name"
-            style={{
-              flex: 1,
-              padding: '12px',
-              margin: '5px 5px 5px 0',
-              border: '2px solid #ccc',
-              borderRadius: '20px',
-              fontSize: '16px',
-            }}
-          />
-          <input
-            type="text"
-            placeholder="Surname"
-            style={{
-              flex: 1,
-              padding: '12px',
-              margin: '5px 0',
-              border: '2px solid #ccc',
-              borderRadius: '20px',
-              fontSize: '16px',
-            }}
-          />
-        </div>
+        />
         <input
           type="email"
           placeholder="Email Address"
@@ -131,28 +111,19 @@ const Signup: React.FC = () => {
             Login
           </a>
         </p>
-        <button
-          style={{
-            width: '100%',
-            maxWidth: '50%',
-            padding: '12px',
-            borderRadius: '20px',
-            border: 'none',
-            cursor: 'pointer',
-            fontSize: '16px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: '5px',
-            marginBottom: '5px',
-            backgroundColor: '#4285F4',
-            color: 'white',
-          }}
-        >
-          <FaGoogle style={{ marginRight: '10px' }} />
-          Continue with Google
-        </button>
       </form>
+      <footer
+        style={{
+          position: 'absolute',
+          bottom: '20px',
+          textAlign: 'center',
+          width: '100%',
+          fontSize: '12px',
+          opacity: '0.6',
+        }}
+      >
+        Copyright © Colossus.AI Rights Reserved
+      </footer>
     </div>
   );
 };
