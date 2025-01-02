@@ -1,79 +1,80 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import { User } from "@/lib/models/user.model";
-import { SignupRequest, AuthResponse } from "@/lib/type/auth.types";
-import jwt from "jsonwebtoken";
-import dbConnect from "@/lib/db";
+import { NextApiRequest, NextApiResponse } from 'next';
+import clientPromise from '../../../lib/mongodb';
+import { SignupRequest, AuthResponse } from '../../../lib/type/auth.types';
+import bcrypt from 'bcryptjs';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<AuthResponse>
 ) {
-  if (req.method !== "POST") {
-    return res
-      .status(405)
-      .json({ success: false, message: "Method not allowed" });
+  if (req.method !== 'POST') {
+    return res.status(405).json({ success: false, message: 'Method not allowed' });
   }
 
   try {
-    await dbConnect(); // Connect to MongoDB using mongoose
-    const { username, email, password, confirmPassword }: SignupRequest =
-      req.body;
+    const client = await clientPromise;
+    const db = client.db("colossus_ai"); // Make sure this matches your database name
+    const users = db.collection("users");
+
+    const { username, email, password, confirmPassword }: SignupRequest = req.body;
 
     // Validation
     if (!username || !email || !password || !confirmPassword) {
       return res.status(400).json({
         success: false,
-        message: "All fields are required",
+        message: 'All fields are required',
       });
     }
 
     if (password !== confirmPassword) {
       return res.status(400).json({
         success: false,
-        message: "Passwords do not match",
+        message: 'Passwords do not match',
       });
     }
 
-    // Check existing user
-    const existingUser = await User.findOne({
-      $or: [{ email }, { username }],
+    // Check if user already exists
+    const existingUser = await users.findOne({
+      $or: [{ email }, { username }]
     });
 
     if (existingUser) {
       return res.status(400).json({
         success: false,
-        message: "Email or username already exists",
+        message: 'User already exists',
       });
     }
 
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 12);
+
     // Create user
-    const user = await User.create({
+    const result = await users.insertOne({
       username,
       email,
-      password,
+      password: hashedPassword,
+      createdAt: new Date(),
+      updatedAt: new Date()
     });
 
-    const token = jwt.sign(
-      { userId: user._id },
-      process.env.JWT_SECRET || "fallback-secret",
-      { expiresIn: "24h" }
-    );
+    const user = {
+      id: result.insertedId.toString(),
+      username,
+      email
+    };
 
-    res.status(201).json({
+    // Return success response
+    return res.status(201).json({
       success: true,
-      message: "Account created successfully",
-      token,
-      user: {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-      },
+      message: 'User created successfully',
+      user
     });
+
   } catch (error) {
-    console.error("Signup error:", error);
-    res.status(500).json({
+    console.error('Signup error:', error);
+    return res.status(500).json({
       success: false,
-      message: "Internal server error",
+      message: 'Internal server error',
     });
   }
 }
