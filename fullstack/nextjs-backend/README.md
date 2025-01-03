@@ -6,6 +6,7 @@ This project implements a backend for user authentication using Next.js and Next
 
 ```
 nextjs-backend
+
 ├── pages
 │   └── api
 │       ├── auth
