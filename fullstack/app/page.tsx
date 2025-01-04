@@ -4,16 +4,18 @@ import Banner from './assets/colossusAI gradient text.png';
 import CanvasCursor from './components/canvacursor/page';
 import Navbar from './navbar/page';
 import Footer from './footer/page';
+import NetworkAnimation from './components/networkanimation/networkanimation';
 
 
 function Page() {
   return (
     <main>
       <Navbar />
-      <section className="hero relative bg-black text-white">
+      <NetworkAnimation />
+      <section className="hero relative text-white">
         <canvas id="network-animation" className="network-bg absolute inset-0"></canvas>
         <div className="container relative z-10 text-center py-20">
-          <div className="flex justify-center my-24">
+          <div className="flex justify-center my-0">
             <Image
               src={Banner}
               alt="ColossusAI Logo"
@@ -30,6 +32,7 @@ function Page() {
             </p>
           </div>
         </div>
+        <div className="flex justify-center"><button className="btn btn-primary">Get Started</button></div>
       </section>
       <CanvasCursor />
       <Footer />
