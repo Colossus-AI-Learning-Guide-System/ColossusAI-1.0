@@ -1,25 +1,85 @@
 import React from 'react'
 import Navbar from '../navbar/page';
 import Footer from '../footer/page';
+import './about.css';
 import Image from 'next/image';
-import Ruhan from '../assets/ruhan.jpg';
+import Link from 'next/link';
+import Ruhan from '../assets/ruhan.png';
+import Akila from '../assets/akila.jpg';
+import Tharana from '../assets/tharana.jpg';
+import Chiran from '../assets/chiran.jpg';
+import Pasidu from '../assets/pasindu.jpg';
+import Sudesh from '../assets/sudesh.jpg';
+import NetworkAnimation from '../components/networkanimation/networkanimation';
 
 function about() {
   return (
     <div>
         <Navbar />
-        <div>
-          <div>
-            <Image src={Ruhan} alt="Ruhan" width={500} height={500} priority/>
-            Ruhan
-          </div>
-          <div>Akila</div>
-          <div>Tharana</div>
-          <div>Chiran</div>
-          <div>Pasidu</div>
-          <div>Sudesh</div>
+        <NetworkAnimation />
+
+        <div className="intro">
+          <h3>DESIGNERS</h3>
         </div>
-        <h1 className="text-3xl font-bold text-center my-96">About</h1>
+
+        <section className="head">
+          <div className="container1">
+            
+            <div className="card">
+              <div className="imgbx"><Image src={Ruhan} alt="ColossusAI Logo" width={1000} height={300} priority/></div>
+                <div className="content">
+                  <h2>Ruhan</h2>
+                  <p>Back-end Coordinator<br />Back-end Developer</p>
+                  <a href="https://www.linkedin.com/in/ruhan-nandalal-683387320/">Linkedin</a>
+                </div>
+            </div>
+
+            <div className="card">
+              <div className="imgbx"><Image src={Tharana} alt="ColossusAI Logo" width={1000} height={300} priority/></div>
+                <div className="content">
+                  <h2>Tharana</h2>
+                  <p>Project Manager<br />Back-end Developer</p>
+                  <a href="https://www.linkedin.com/in/tharana-bopearachchi/">Linkedin</a>
+                </div>
+            </div>
+
+            <div className="card">
+              <div className="imgbx"><Image src={Chiran} alt="ColossusAI Logo" width={1000} height={300} priority/></div>
+                <div className="content">
+                  <h2>Chiran</h2>
+                  <p>Back-end Developer<br />UI Designer</p>
+                  <a href="https://www.linkedin.com/in/chiran-senarath-088524235/">Linkedin</a>
+                </div>
+            </div>
+
+            <div className="card">
+              <div className="imgbx"><Image src={Sudesh} alt="ColossusAI Logo" width={1000} height={300} priority/></div>
+                <div className="content">
+                  <h2>Sudesh</h2>
+                  <p>Frontend-end Coordinator<br />Front-end Developer</p>
+                  <a href="https://www.linkedin.com/in/sudesharoshaseneviratne/">Linkedin</a>
+                </div>
+            </div>
+            
+            <div className="card">
+              <div className="imgbx"><Image src={Akila} alt="ColossusAI Logo" width={1000} height={300} priority/></div>
+                <div className="content">
+                  <h2>Akila</h2>
+                  <p>Front-end Developer<br />UI Designer</p>
+                  <a href="https://www.linkedin.com/in/akila-senanayake-23aab42a7/">Linkedin</a>
+                </div>
+            </div>
+
+            <div className="card">
+              <div className="imgbx"><Image src={Pasidu} alt="ColossusAI Logo" width={1000} height={300} priority/></div>
+                <div className="content">
+                  <h2>Pasidu</h2>
+                  <p>Front-end Developer<br />UI Designer</p>
+                  <a href="https://www.linkedin.com/in/pasindu-gamage-14442015a/">Linkedin</a>
+                </div>
+            </div>
+          </div>
+        </section>
         <Footer />
     </div>
   )

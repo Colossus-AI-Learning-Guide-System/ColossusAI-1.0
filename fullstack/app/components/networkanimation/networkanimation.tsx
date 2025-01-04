@@ -91,6 +91,6 @@ export default function NetworkAnimation() {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="fixed inset-0 z-[-1] opacity-50" />
+  return <canvas ref={canvasRef} className="fixed inset-0 z-[-1] opacity-60" />
 }
 

@@ -4,6 +4,8 @@ import { Facebook, Youtube, Instagram, Linkedin, Twitter, Github, Mail } from "l
 import Link from "next/link";
 import Navbar from "../navbar/page";
 import Footer from "../footer/page";
+import NetworkAnimation from '../components/networkanimation/networkanimation';
+import './contactus.css';
 
 // Define the DiscordWidget component
 type DiscordWidgetProps = {
@@ -46,7 +48,8 @@ const ContactPage: React.FC = () => {
   return (
     <div className="mt-40 ml-auto mr-auto">
       <Navbar />
-      <div className="container mx-auto my-10 px-4">
+      <NetworkAnimation />
+      <div className="mx-auto my-10 px-4 z-10">
         <h1 className="text-3xl font-bold text-center mb-6">Contact Us</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto my-10">
           {socialLinks.map((link) => (

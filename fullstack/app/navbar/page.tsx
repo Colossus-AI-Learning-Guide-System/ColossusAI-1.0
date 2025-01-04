@@ -16,11 +16,11 @@ const navbar = () => {
           </div>
 
           <ul className="nav-links flex  space-x-10">
-            <li>
-              <Link href="/features" className=" hover:text-blue-500">
+            {/* <li>
+              <Link href="#features" className=" hover:text-blue-500">
                 Features
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link href="/feedback" className="hover:text-blue-500">
                 Feedback
