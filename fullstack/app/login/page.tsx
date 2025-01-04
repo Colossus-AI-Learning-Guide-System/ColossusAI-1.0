@@ -42,7 +42,7 @@ const Login = () => {
       router.push("/dashboard");
     } catch (error) {
       toast.error(
-        error instanceof Error ? error.message : "Something went wrong!"
+        error instanceof Error ? error.message : "Invalid credentials"
       );
     } finally {
       setIsLoading(false);
@@ -59,13 +59,12 @@ const Login = () => {
         className="flex flex-col items-center w-full max-w-xs mt-6"
       >
         <input
-          type="email"
+          type="text"
           name="email"
           value={formData.email}
           onChange={handleChange}
           placeholder="Email Address"
           className="w-full px-4 py-3 mb-4 border-2 border-gray-300 rounded-full text-base bg-gray-50 focus:outline-none focus:border-gray-400"
-          required
         />
         <input
           type="password"
@@ -74,7 +73,6 @@ const Login = () => {
           onChange={handleChange}
           placeholder="Password"
           className="w-full px-4 py-3 mb-6 border-2 border-gray-300 rounded-full text-base bg-gray-50 focus:outline-none focus:border-gray-400"
-          required
         />
         <button
           type="submit"
