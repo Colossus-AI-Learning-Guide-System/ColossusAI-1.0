@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import clientPromise from "@/lib/mongodb";
+import clientPromise from "@/config/database/mongodb";
 import { sendFeedbackEmail } from "@/lib/utils/email";
 
 export async function POST(request: Request) {
