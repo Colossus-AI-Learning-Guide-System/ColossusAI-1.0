@@ -1,3 +1,5 @@
+'use client';
+
 import RateUsForm from './rate-us-form'
 import React from 'react'
 import Navbar from '../navbar/page'

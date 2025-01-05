@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react'
 import Navbar from '../navbar/page';
 import Footer from '../footer/page';
@@ -11,10 +13,11 @@ import Chiran from '../assets/chiran.jpg';
 import Pasidu from '../assets/pasindu.jpg';
 import Sudesh from '../assets/sudesh.jpg';
 import NetworkAnimation from '../components/networkanimation/networkanimation';
+import { FaLinkedin } from "react-icons/fa";
 
 function about() {
   return (
-    <div>
+    <main>
         <Navbar />
         <NetworkAnimation />
 
@@ -30,7 +33,9 @@ function about() {
                 <div className="content">
                   <h2>Ruhan</h2>
                   <p>Back-end Coordinator<br />Back-end Developer</p>
-                  <a href="https://www.linkedin.com/in/ruhan-nandalal-683387320/">Linkedin</a>
+                  <div className='personal-linkedin'>
+                    <a href="https://www.linkedin.com/in/ruhan-nandalal-683387320/" className='a'><FaLinkedin className='icon'/>LinkedIn</a>
+                  </div>
                 </div>
             </div>
 
@@ -39,7 +44,9 @@ function about() {
                 <div className="content">
                   <h2>Tharana</h2>
                   <p>Project Manager<br />Back-end Developer</p>
-                  <a href="https://www.linkedin.com/in/tharana-bopearachchi/">Linkedin</a>
+                  <div className='personal-linkedin'>
+                    <a href="https://www.linkedin.com/in/tharana-bopearachchi/" className='a'><FaLinkedin className='icon'/>LinkedIn</a>
+                  </div>
                 </div>
             </div>
 
@@ -48,7 +55,9 @@ function about() {
                 <div className="content">
                   <h2>Chiran</h2>
                   <p>Back-end Developer<br />UI Designer</p>
-                  <a href="https://www.linkedin.com/in/chiran-senarath-088524235/">Linkedin</a>
+                  <div className='personal-linkedin'>
+                    <a href="https://www.linkedin.com/in/chiran-senarath-088524235/" className='a'><FaLinkedin className='icon'/>LinkedIn</a>
+                  </div>
                 </div>
             </div>
 
@@ -57,7 +66,9 @@ function about() {
                 <div className="content">
                   <h2>Sudesh</h2>
                   <p>Frontend-end Coordinator<br />Front-end Developer</p>
-                  <a href="https://www.linkedin.com/in/sudesharoshaseneviratne/">Linkedin</a>
+                  <div className='personal-linkedin'>
+                    <a href="https://www.linkedin.com/in/sudesharoshaseneviratne/" className='a'><FaLinkedin className='icon'/>LinkedIn</a>
+                  </div>
                 </div>
             </div>
             
@@ -66,7 +77,9 @@ function about() {
                 <div className="content">
                   <h2>Akila</h2>
                   <p>Front-end Developer<br />UI Designer</p>
-                  <a href="https://www.linkedin.com/in/akila-senanayake-23aab42a7/">Linkedin</a>
+                  <div className='personal-linkedin'>
+                    <a href="https://www.linkedin.com/in/akila-senanayake-23aab42a7/" className='a'><FaLinkedin className='icon'/>LinkedIn</a>
+                  </div>
                 </div>
             </div>
 
@@ -75,13 +88,15 @@ function about() {
                 <div className="content">
                   <h2>Pasidu</h2>
                   <p>Front-end Developer<br />UI Designer</p>
-                  <a href="https://www.linkedin.com/in/pasindu-gamage-14442015a/">Linkedin</a>
+                  <div className='personal-linkedin'>
+                    <a href="https://www.linkedin.com/in/pasindu-gamage-14442015a/" className='a'><FaLinkedin className='icon'/>LinkedIn</a>
+                  </div>
                 </div>
             </div>
           </div>
         </section>
         <Footer />
-    </div>
+    </main>
   )
 }
 

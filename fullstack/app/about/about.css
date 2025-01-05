@@ -8,7 +8,7 @@
     margin-left: auto;
     margin-right: auto;
     border-radius: 30px;
-    max-width: 12%;
+    max-width: 200px;
     z-index: 10;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .imgbx{
-    margin-left: 5px;
+    margin-left: 6px;
 }
 
 .container1 .card .imgbx{
@@ -88,4 +88,37 @@
 .container1 .card:hover .content{
     top: 130px;
     height: 250px;
+}
+
+.personal-linkedin {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    display: block;
+    height: 50px;
+    width: 215px;
+    border: 2px solid #0077B5;
+    border-radius: 10px;
+}
+
+.icon {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #0077B5;
+    height: 40px;
+    width: 40px;
+    padding: 10px 0 0 10px;
+}
+
+.a {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #0077B5;
+    font-size: 25px;
 }
