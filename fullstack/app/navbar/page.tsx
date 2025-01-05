@@ -45,12 +45,12 @@ const navbar = () => {
             </li>
             <li className="flex">
               <div className='block bg-gray-500 px-4 py-2 rounded-full'>
-              <Link href="#login" className="hover:text-blue-500">
+              <Link href="/login" className="hover:text-blue-500">
                 Login
               </Link>
               </div>
               <div className='block bg-black  px-4 py-2 rounded-full'>
-              <Link href="#Signup" className="hover:text-blue-500">
+              <Link href="/signup" className="hover:text-blue-500">
                 Signup
               </Link>
               </div>
