@@ -33,10 +33,6 @@ const Footer = () => {
               <Github size={24} />
               <span className="sr-only">GitHub</span>
             </Link>
-            <Link href="mailto:contact@example.com" className="text-white hover:text-gray-300">
-              <Mail size={24} />
-              <span className="sr-only">Email</span>
-            </Link>
           </div>
           <div className="text-center">
             <p>Copyrights © Colossus.AI 2025 All rights reserved.</p>

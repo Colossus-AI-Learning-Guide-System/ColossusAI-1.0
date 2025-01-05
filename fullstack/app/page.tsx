@@ -2,12 +2,14 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Banner from './assets/colossusAI gradient text.png';
 import CanvasCursor from './components/canvacursor/page';
 import Navbar from './navbar/page';
 import Footer from './footer/page';
 import NetworkAnimation from './components/networkanimation/networkanimation';
 import { TypeWriter } from './components/ui/type-writer';
+import Getstarted from './signup/page';
 
 
 function Page() {
@@ -27,13 +29,12 @@ function Page() {
                 <TypeWriter text="The Future of AI is Here" className="text-primary" speed={80}/>
               </h1>
             </div>
-            <h5 className="mb-6 text-white">
-              <b>Experience the power of advanced Artificial Intelligence with Colossus.AI, revolutionizing education through <br />
-              intelligent, adaptive, and personalized learning experiences that empower users to achieve their full potential.</b>
+            <h5 className="mb-6 text-white my-28">
+              <b>Experience the power of advanced Artificial Intelligence with <br />Colossus.AI, revolutionizing education through
+              intelligent, adaptive, and <br />personalized learning experiences that empower users <br />to achieve their full potential.</b>
             </h5>
           </div>
         </div>
-        <div className="flex justify-center"><button className="btn btn-primary">Get Started</button></div>
       </section>
       <CanvasCursor />
       <Footer />

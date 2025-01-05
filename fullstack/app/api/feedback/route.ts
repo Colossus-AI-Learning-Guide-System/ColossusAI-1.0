@@ -1,26 +1,27 @@
-// import { NextResponse } from "next/server";
-// import { sendFeedbackEmail } from "@/lib/utils/email";
+import { NextResponse } from "next/server";
+import clientPromise from "@/config/database/mongodb";
+import { sendFeedbackEmail } from "@/lib/utils/email";
 
-// export async function POST(request: Request) {
-//   try {
-//     const feedback = await request.json();
+export async function POST(request: Request) {
+  try {
+    const feedback = await request.json();
 
-//     const client = await clientPromise;
-//     const db = client.db("colossus_ai");
+    const client = await clientPromise;
+    const db = client.db("colossus_ai");
 
-//     await db.collection("feedback").insertOne({
-//       ...feedback,
-//       createdAt: new Date(),
-//     });
+    await db.collection("feedback").insertOne({
+      ...feedback,
+      createdAt: new Date(),
+    });
 
-//     await sendFeedbackEmail(feedback);
+    await sendFeedbackEmail(feedback);
 
-//     return NextResponse.json({ message: "Feedback submitted successfully" });
-//   } catch (error) {
-//     console.error("Feedback submission error:", error);
-//     return NextResponse.json(
-//       { message: "Failed to submit feedback" },
-//       { status: 500 }
-//     );
-//   }
-// }
+    return NextResponse.json({ message: "Feedback submitted successfully" });
+  } catch (error) {
+    console.error("Feedback submission error:", error);
+    return NextResponse.json(
+      { message: "Failed to submit feedback" },
+      { status: 500 }
+    );
+  }
+}

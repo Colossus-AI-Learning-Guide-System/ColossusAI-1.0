@@ -9,6 +9,7 @@ import KnowledgeGraph from '@/components/knowledge-graph';
 import { Send } from 'lucide-react';
 import { AppSidebar } from "@/components/app-sidebar"
 import 'reactflow/dist/style.css'
+import Navbarinside from '../components/navbarinside/page';
 
 export default function ChatInterface() {
   const [input, setInput] = useState('');
@@ -70,6 +71,9 @@ export default function ChatInterface() {
 
   return (
     <div className="flex flex-col lg:flex-row h-[calc(100vh-theme(spacing.16))] gap-4">
+      <nav>
+        {/* <Navbarinside /> */}
+      </nav>
       <div>
         <AppSidebar />
       </div>

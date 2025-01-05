@@ -39,7 +39,7 @@ const Login = () => {
       }
 
       toast.success("Logged in successfully!");
-      router.push("/dashboard");
+      router.push("/chatbot");
     } catch (error) {
       toast.error(
         error instanceof Error ? error.message : "Invalid credentials"
