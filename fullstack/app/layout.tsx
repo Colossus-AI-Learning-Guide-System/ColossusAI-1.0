@@ -2,7 +2,7 @@ import { Inter } from 'next/font/google'
 import "./globals.css"
 import { AppSidebar } from "@/components/app-sidebar"
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import 'reactflow/dist/style.css'
 
@@ -10,7 +10,11 @@ const inter = Inter({ subsets: ["latin"] })
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+import { Toaster } from "react-hot-toast";
+
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -35,6 +39,12 @@ export default function RootLayout({
       </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body className={`${inter.variable} font-sans antialiased`}>
+        <Toaster position="top-center" />
         {children}
       <body className={inter.className}>
         <div className="relative min-h-screen">

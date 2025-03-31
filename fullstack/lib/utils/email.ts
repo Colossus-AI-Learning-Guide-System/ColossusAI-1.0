@@ -34,3 +34,4 @@ export const sendFeedbackEmail = async (feedbackData: any) => {
     throw error;
   }
 };
+};
